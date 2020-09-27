@@ -2,7 +2,7 @@ import javax.security.auth.login.LoginException;
 
 public class MainBot {
 
-    public static String token = "NzU5NjQ3OTM5MjYwOTczMDU2.X3AjRg.fct694hCIhpjEqYKn_ghW3Thxgc";
+    public static String token = "token that is going to be shitty blurred";
 
     public static void main(String[] args) throws LoginException {
         new BotUtilities(token, "!", new MainBot());
