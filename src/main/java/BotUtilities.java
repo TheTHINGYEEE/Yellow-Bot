@@ -1,5 +1,6 @@
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.JDABuilder;
+import net.dv8tion.jda.api.entities.TextChannel;
 
 import javax.security.auth.login.LoginException;
 
@@ -15,10 +16,14 @@ public class BotUtilities {
         BotUtilities.prefix = prefix;
         BotUtilities.mainClass = mainClass;
     }
-    public static void startBot() throws LoginException {
-        bot = new JDABuilder(token).build();
+    public static void startBot() {
+        try {
+            bot = new JDABuilder().setToken(token).build();
+        } catch (LoginException e) {
+            e.printStackTrace();
+        }
     }
-    public static JDA getBot() {
+    public static JDA getJDA() {
         return bot;
     }
     public static String getPrefix() {
@@ -30,4 +35,6 @@ public class BotUtilities {
     public static String[] convertToArguments(String string) { return string.split(" "); }
     public static boolean messageEquals(String message, String command) { boolean aa = (message.equalsIgnoreCase(command)); return aa; }
     public static Object getMainInstance() { return mainClass; }
+    public static void addEventListener(Object listener) { bot.addEventListener(listener); }
+
 }
